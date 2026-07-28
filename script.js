@@ -1,55 +1,68 @@
-let produits = [];
+let produits = JSON.parse(localStorage.getItem("produits")) || [];
 
 function ajouterProduit() {
-    const produit = document.getElementById("produit").value.trim();
+
+    const categorie = document.getElementById("categorie").value;
+    const produit = document.getElementById("produit").value;
     const quantite = document.getElementById("quantite").value;
 
-    if (produit === "" || quantite === "") {
-        alert("Veuillez remplir tous les champs.");
+    if(produit==="" || quantite===""){
+        alert("Veuillez remplir tous les champs");
         return;
     }
 
     produits.push({
-        produit: produit,
-        quantite: quantite
+        categorie,
+        produit,
+        quantite
     });
 
-    afficherProduits();
+    sauvegarder();
+    afficher();
 
-    document.getElementById("produit").value = "";
-    document.getElementById("quantite").value = "";
+    document.getElementById("produit").value="";
+    document.getElementById("quantite").value="";
 }
 
-function afficherProduits() {
-    const liste = document.getElementById("listeProduits");
-    liste.innerHTML = "";
+function afficher(){
 
-    produits.forEach((item, index) => {
-        liste.innerHTML += `
+    let html="";
+
+    produits.forEach((p,index)=>{
+
+        html += `
         <tr>
-            <td>${item.produit}</td>
-            <td>${item.quantite}</td>
+            <td>${p.categorie}</td>
+            <td>${p.produit}</td>
+            <td>${p.quantite}</td>
             <td>
-                <button class="supprimer" onclick="supprimerProduit(${index})">
-                    Supprimer
+                <button class="supprimer" onclick="supprimer(${index})">
+                Supprimer
                 </button>
             </td>
-        </tr>`;
+        </tr>
+        `;
+
     });
 
-    localStorage.setItem("produits", JSON.stringify(produits));
+    document.getElementById("listeProduits").innerHTML=html;
+
 }
 
-function supprimerProduit(index) {
-    produits.splice(index, 1);
-    afficherProduits();
+function supprimer(index){
+
+    produits.splice(index,1);
+
+    sauvegarder();
+
+    afficher();
+
 }
 
-window.onload = function () {
-    const data = localStorage.getItem("produits");
+function sauvegarder(){
 
-    if (data) {
-        produits = JSON.parse(data);
-        afficherProduits();
-    }
-};
+    localStorage.setItem("produits",JSON.stringify(produits));
+
+}
+
+afficher();
