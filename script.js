@@ -1,12 +1,16 @@
 let produits = JSON.parse(localStorage.getItem("produits")) || [];
 
-function ajouterProduit() {
+const liste = document.getElementById("listeProduits");
+const nbProduits = document.getElementById("nbProduits");
+const nbCommandes = document.getElementById("nbCommandes");
+
+function ajouterProduit(){
 
     const categorie = document.getElementById("categorie").value;
-    const produit = document.getElementById("produit").value;
+    const produit = document.getElementById("produit").value.trim();
     const quantite = document.getElementById("quantite").value;
 
-    if(produit==="" || quantite===""){
+    if(produit=="" || quantite==""){
         alert("Veuillez remplir tous les champs");
         return;
     }
@@ -26,30 +30,59 @@ function ajouterProduit() {
 
 function afficher(){
 
-    let html="";
+    liste.innerHTML="";
 
-    produits.forEach((p,index)=>{
+    produits.forEach((item,index)=>{
 
-        html += `
+        liste.innerHTML +=`
         <tr>
-            <td>${p.categorie}</td>
-            <td>${p.produit}</td>
-            <td>${p.quantite}</td>
-            <td>
-                <button class="supprimer" onclick="supprimer(${index})">
-                Supprimer
-                </button>
-            </td>
+        <td>${item.categorie}</td>
+        <td>${item.produit}</td>
+        <td>${item.quantite}</td>
+
+        <td>
+
+        <button onclick="modifier(${index})">
+        ✏️
+        </button>
+
+        <button class="supprimer" onclick="supprimer(${index})">
+        🗑️
+        </button>
+
+        </td>
+
         </tr>
         `;
 
     });
 
-    document.getElementById("listeProduits").innerHTML=html;
+    nbProduits.innerHTML=produits.length;
+    nbCommandes.innerHTML=produits.length;
 
 }
 
 function supprimer(index){
+
+    if(confirm("Supprimer ce produit ?")){
+
+        produits.splice(index,1);
+
+        sauvegarder();
+
+        afficher();
+
+    }
+
+}
+
+function modifier(index){
+
+    document.getElementById("categorie").value=produits[index].categorie;
+
+    document.getElementById("produit").value=produits[index].produit;
+
+    document.getElementById("quantite").value=produits[index].quantite;
 
     produits.splice(index,1);
 
