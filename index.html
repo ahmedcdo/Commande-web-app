@@ -2,46 +2,174 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Commande Pro</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/4b8b83b6d8.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 
+<div class="sidebar">
+
+<div class="logo">
+🍔 <span>Commande Pro</span>
+</div>
+
+<ul>
+
+<li class="active">
+<i class="fas fa-home"></i>
+Tableau de bord
+</li>
+
+<li>
+<i class="fas fa-shopping-cart"></i>
+Nouvelle commande
+</li>
+
+<li>
+<i class="fas fa-box"></i>
+Produits
+</li>
+
+<li>
+<i class="fas fa-warehouse"></i>
+Stock
+</li>
+
+<li>
+<i class="fas fa-chart-bar"></i>
+Statistiques
+</li>
+
+<li>
+<i class="fas fa-print"></i>
+Impression
+</li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
 <header>
-<h1>📦 Commande Pro</h1>
+
+<h1>
+Commande Manager
+</h1>
+
+<div class="user">
+
+<button class="btn">
+Nouvelle Commande
+</button>
+
+</div>
+
 </header>
 
-<div class="container">
+<div class="cards">
 
-<h2>Nouvelle commande</h2>
+<div class="card">
+
+<h2>Produits</h2>
+
+<h1 id="nbProduits">0</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Commandes</h2>
+
+<h1 id="nbCommandes">0</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Stock</h2>
+
+<h1>100%</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Alertes</h2>
+
+<h1>0</h1>
+
+</div>
+
+</div>
+
+<div class="tableau">
+
+<h2>Nouvelle Commande</h2>
+
+<div class="form">
 
 <select id="categorie">
+
 <option>Pain</option>
+
 <option>Viande</option>
+
+<option>Poulet</option>
+
 <option>Frites</option>
+
 <option>Sauces</option>
+
 <option>Boissons</option>
+
 <option>Desserts</option>
-<option>Emballages</option>
+
+<option>Packaging</option>
+
 </select>
 
-<input type="text" id="produit" placeholder="Produit">
+<input
+type="text"
+id="produit"
+placeholder="Nom du produit">
 
-<input type="number" id="quantite" placeholder="Quantité">
+<input
+type="number"
+id="quantite"
+placeholder="Quantité">
 
-<button onclick="ajouterProduit()">Ajouter</button>
+<button onclick="ajouterProduit()">
+
+Ajouter
+
+</button>
+
+</div>
 
 <table>
 
 <thead>
 
 <tr>
+
 <th>Catégorie</th>
+
 <th>Produit</th>
-<th>Qté</th>
+
+<th>Quantité</th>
+
 <th>Action</th>
+
 </tr>
 
 </thead>
@@ -52,7 +180,7 @@
 
 </table>
 
-<button onclick="window.print()">🖨️ Imprimer</button>
+</div>
 
 </div>
 
