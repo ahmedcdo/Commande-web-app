@@ -3,39 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Commande Web App</title>
+<title>Commande Pro</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <h1>📦 Commande Web App</h1>
+<h1>📦 Commande Pro</h1>
 </header>
 
 <div class="container">
 
-<h2>Nouvelle Commande</h2>
+<h2>Nouvelle commande</h2>
 
-<input type="text" id="produit" placeholder="Nom du produit">
+<select id="categorie">
+<option>Pain</option>
+<option>Viande</option>
+<option>Frites</option>
+<option>Sauces</option>
+<option>Boissons</option>
+<option>Desserts</option>
+<option>Emballages</option>
+</select>
+
+<input type="text" id="produit" placeholder="Produit">
 
 <input type="number" id="quantite" placeholder="Quantité">
 
 <button onclick="ajouterProduit()">Ajouter</button>
 
 <table>
+
 <thead>
+
 <tr>
+<th>Catégorie</th>
 <th>Produit</th>
-<th>Quantité</th>
+<th>Qté</th>
 <th>Action</th>
 </tr>
+
 </thead>
 
 <tbody id="listeProduits">
+
 </tbody>
 
 </table>
+
+<button onclick="window.print()">🖨️ Imprimer</button>
 
 </div>
 
